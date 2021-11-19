@@ -127,9 +127,9 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: .
-      - run: make BUILD_IN_CONTAINER=false SUDO= static all
-      - run: cd extras; make BUILD_IN_CONTAINER=false
-      - run: make -C tools/runner
+      - run: GOARCH=arm64 make BUILD_IN_CONTAINER=false SUDO= static all
+      - run: cd extras; GOARCH=arm64 make BUILD_IN_CONTAINER=false
+      - run: GOARCH=arm make -C tools/runner
       - persist_to_workspace:
           root: .
           paths:
