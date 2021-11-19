@@ -36,7 +36,6 @@ workflows:
               only: master
           requires:
             - client-test
-            - integration-tests
 
 jobs:
   lint:
