@@ -161,7 +161,10 @@ jobs:
       - run: |
           sudo apt-get update
           sudo apt-get install python-pip jq pv libpcap-dev linux-headers-$(uname -r)
-          sudo git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git || cd linux || sudo git checkout v4.4 || sudo make headers_install INSTALL_HDR_PATH=/usr
+          sudo git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+          cd linux
+          sudo git checkout v4.4
+          sudo make headers_install INSTALL_HDR_PATH=/usr
       - run: mkdir $CIRCLE_ARTIFACTS
       # kick off creation of test VMs
       - run: test -z "$SECRET_PASSWORD" || bin/setup-circleci-secrets "$SECRET_PASSWORD"
